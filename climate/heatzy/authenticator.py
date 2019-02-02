@@ -32,7 +32,7 @@ class HeatzyAuthenticator:
 
         if response.status != 200:
             _LOGGER.error("Heatzy API returned HTTP status %d, response %s",
-                          response.status, result)
+                          response.status, response)
             return None
 
         authentication = await response.json()
