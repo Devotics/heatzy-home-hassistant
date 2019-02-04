@@ -71,11 +71,11 @@ class HeatzyPiloteV1Thermostat(ClimateDevice):
 
     async def async_turn_on(self):
         """Turn device on."""
-        await self._api.async_set_operation_mode(STATE_HEAT)
+        await self.async_set_operation_mode(STATE_HEAT)
 
     async def async_turn_off(self):
         """Turn device off."""
-        await self._api.async_set_operation_mode(STATE_OFF)
+        await self.async_set_operation_mode(STATE_OFF)
 
     async def async_update(self):
         """Retrieve latest state."""
