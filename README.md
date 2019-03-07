@@ -29,7 +29,7 @@ climate:
     username: <your heatzy email>
     password: <your heatzy password>
 ```
-This configuration will allow the component to query the Heatzy API to retrieve and contrôl your devices status.
+This configuration will allow the component to query the Heatzy API to retrieve and control your devices status.
 
 ## License
 

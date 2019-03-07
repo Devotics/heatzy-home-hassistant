@@ -1,28 +1,25 @@
-from homeassistant.components.climate import (STATE_COOL, STATE_ECO,
-                                              STATE_HEAT, SUPPORT_AWAY_MODE,
-                                              SUPPORT_ON_OFF,
-                                              SUPPORT_OPERATION_MODE,
-                                              ClimateDevice)
+from homeassistant.components.climate import ClimateDevice
+from homeassistant.components.climate.const import (STATE_COOL, STATE_ECO,
+                                                    STATE_HEAT, SUPPORT_ON_OFF,
+                                                    SUPPORT_OPERATION_MODE)
 from homeassistant.const import STATE_OFF, TEMP_CELSIUS
 
 HEATZY_TO_HA_STATE = {
-    'cft': STATE_HEAT,
-    'eco': STATE_ECO,
-    'fro': STATE_COOL,
-    'stop': STATE_OFF,
+    '\u8212\u9002': STATE_HEAT,
+    '\u7ecf\u6d4e': STATE_ECO,
+    '\u89e3\u51bb': STATE_COOL,
+    '\u505c\u6b62': STATE_OFF,
 }
 
 HA_TO_HEATZY_STATE = {
-    STATE_HEAT: 'cft',
-    STATE_ECO: 'eco',
-    STATE_COOL: 'fro',
-    STATE_OFF: 'stop',
+    STATE_HEAT: [1, 1, 0],
+    STATE_ECO: [1, 1, 1],
+    STATE_COOL: [1, 1, 2],
+    STATE_OFF: [1, 1, 3],
 }
-AWAY_MODE_ON = 1
-AWAY_MODE_OFF = 0
 
 
-class HeatzyPiloteV2Thermostat(ClimateDevice):
+class HeatzyPiloteV1Thermostat(ClimateDevice):
     def __init__(self, api, device):
         self._api = api
         self._device = device
@@ -44,7 +41,7 @@ class HeatzyPiloteV2Thermostat(ClimateDevice):
     @property
     def supported_features(self):
         """Return the list of supported features."""
-        return SUPPORT_OPERATION_MODE | SUPPORT_AWAY_MODE | SUPPORT_ON_OFF
+        return SUPPORT_OPERATION_MODE | SUPPORT_ON_OFF
 
     @property
     def unique_id(self):
@@ -61,11 +58,6 @@ class HeatzyPiloteV2Thermostat(ClimateDevice):
         return HEATZY_TO_HA_STATE.get(self._device.get('attr').get('mode'))
 
     @property
-    def is_away_mode_on(self):
-        """Return true if away mode is on."""
-        return self._device.get('attr').get('derog_mode') == AWAY_MODE_ON
-
-    @property
     def is_on(self):
         """Return true if on."""
         return self.current_operation != STATE_OFF
@@ -73,9 +65,7 @@ class HeatzyPiloteV2Thermostat(ClimateDevice):
     async def async_set_operation_mode(self, operation_mode):
         """Set new target operation mode."""
         await self._api.async_control_device(self.unique_id, {
-            'attrs': {
-                'mode': HA_TO_HEATZY_STATE.get(operation_mode),
-            },
+            'raw': HA_TO_HEATZY_STATE.get(operation_mode),
         })
         await self.async_update()
 
@@ -86,23 +76,6 @@ class HeatzyPiloteV2Thermostat(ClimateDevice):
     async def async_turn_off(self):
         """Turn device off."""
         await self.async_set_operation_mode(STATE_OFF)
-
-    async def async_set_away_mode(self, away_mode):
-        """Set away mode."""
-        await self._api.async_control_device(self.unique_id, {
-            'attrs': {
-                'derog_mode': away_mode,
-            },
-        })
-        await self.async_update()
-
-    async def async_turn_away_mode_on(self):
-        """Turn away mode on."""
-        await self.async_set_away_mode(AWAY_MODE_ON)
-
-    async def async_turn_away_mode_off(self):
-        """Turn away mode off."""
-        await self.async_set_away_mode(AWAY_MODE_OFF)
 
     async def async_update(self):
         """Retrieve latest state."""
