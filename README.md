@@ -4,7 +4,7 @@ Climate Home Assistant component for Heatzy Pilot
 
 ## Installation
 
-To register the heatzy component to Home Assistant, copy the `climate` folder from this repository to your Home Assistant `custom_components` folder.
+To register the heatzy component to Home Assistant, copy the `heatzy` folder from this repository to your Home Assistant `custom_components` folder.
 The following commands assume that your Home Assistant folder is located in `~/.homeassistant/custom_components`:
 
 ```bash
@@ -14,8 +14,8 @@ mkdir -p ~/.homeassistant/custom_components
 cd ~/.homeassistant/custom_components
 # Fetch this repo and extract it
 curl -L https://api.github.com/repos/Devotics/heatzy-home-hassistant/tarball/master | tar -xz
-# Copy climate folder
-cp -rl Devotics-heatzy-home-hassistant-*/climate .
+# Copy heatzy folder
+cp -rl Devotics-heatzy-home-hassistant-*/heatzy .
 # Clean up
 rm -rf Devotics-heatzy-home-hassistant-*
 ```
