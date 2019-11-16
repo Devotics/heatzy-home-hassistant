@@ -6,14 +6,16 @@ from homeassistant.helpers import aiohttp_client, storage
 
 from .api import HeatzyAPI
 from .authenticator import HeatzyAuthenticator
-from .const import (HEATZY_PILOTE_V1_PRODUCT_KEY, HEATZY_PILOTE_V2_PRODUCT_KEY,
-                    STORAGE_KEY, STORAGE_VERSION)
+from .const import STORAGE_KEY, STORAGE_VERSION
 from .pilote_v1 import HeatzyPiloteV1Thermostat
 from .pilote_v2 import HeatzyPiloteV2Thermostat
 
 PRODUCT_KEY_TO_DEVICE_IMPLEMENTATION = {
-    HEATZY_PILOTE_V1_PRODUCT_KEY: HeatzyPiloteV1Thermostat,
-    HEATZY_PILOTE_V2_PRODUCT_KEY: HeatzyPiloteV2Thermostat,
+    # Heatzy Pilote v1
+    '9420ae048da545c88fc6274d204dd25f': HeatzyPiloteV1Thermostat,
+    # Heatzy Pilote v2
+    '51d16c22a5f74280bc3cfe9ebcdc6402': HeatzyPiloteV2Thermostat,
+    'b9a67b6ce24b437d9794103fd317e627': HeatzyPiloteV2Thermostat,
 }
 
 _LOGGER = logging.getLogger(__name__)
