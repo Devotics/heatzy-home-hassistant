@@ -10,7 +10,7 @@ You can find installation instructions for specific Home Assistant versions belo
 
 | Home Assistant version  | Heatzy component version                                  |
 | ----------------------- | --------------------------------------------------------- |
-| 0.96 and higher         | [3.0.0](#installation-for-home-assistant-096-and-higher)  |
+| 0.96 and higher         | [master](#installation-for-home-assistant-096-and-higher) |
 | 0.89 to 0.95            | [2.0.1](#installation-for-home-assistant-089-to-095)      |
 | 0.88 and lower          | [1.1.1](#installation-for-home-assistant-088-and-lower)   |
 
