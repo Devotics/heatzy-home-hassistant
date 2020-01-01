@@ -16,6 +16,7 @@ PRODUCT_KEY_TO_DEVICE_IMPLEMENTATION = {
     # Heatzy Pilote v2
     '51d16c22a5f74280bc3cfe9ebcdc6402': HeatzyPiloteV2Thermostat,
     'b9a67b6ce24b437d9794103fd317e627': HeatzyPiloteV2Thermostat,
+    '4fc968a21e7243b390e9ede6f1c6465d': HeatzyPiloteV2Thermostat
 }
 
 _LOGGER = logging.getLogger(__name__)
