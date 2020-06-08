@@ -1,6 +1,8 @@
 # heatzy-home-assistant
 
-Climate Home Assistant component for Heatzy Pilot
+Home Assistant integration for the [Heatzy Pilot](https://heatzy.com/pilote) electric heater controller.
+
+> You can find some extra information on how to integrate this component in your Home Assistant installation [here](https://community.home-assistant.io/t/heatzy-compoment/54863).
 
 ## Installation
 
