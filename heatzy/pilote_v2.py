@@ -1,4 +1,4 @@
-from homeassistant.components.climate import ClimateDevice
+from homeassistant.components.climate import ClimateEntity
 from homeassistant.components.climate.const import (HVAC_MODE_AUTO,
                                                     PRESET_AWAY,
                                                     PRESET_COMFORT, PRESET_ECO,
@@ -21,7 +21,7 @@ HA_TO_HEATZY_STATE = {
 }
 
 
-class HeatzyPiloteV2Thermostat(ClimateDevice):
+class HeatzyPiloteV2Thermostat(ClimateEntity):
     def __init__(self, api, device):
         self._api = api
         self._device = device
