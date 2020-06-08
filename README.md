@@ -90,8 +90,8 @@ Once installed, add the following lines to your `configuration.yaml`:
 ```yaml
 climate:
   - platform: heatzy
-    username: <your heatzy email>
-    password: <your heatzy password>
+    username: '<your heatzy email>'
+    password: '<your heatzy password>'
 ```
 
 This configuration will allow the component to query the Heatzy API to retrieve and control your devices status.
