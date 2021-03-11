@@ -1,5 +1,7 @@
 # heatzy-home-assistant
 
+**🚨 NOTICE: heatzy-home-assistant is no longer maintained and stopped working with versions 2021 of Home Assistant ([Learn more](https://github.com/Devotics/heatzy-home-hassistant/issues/20)). As an alternative, you can try [hass-heatzy](https://github.com/Cyr-ius/hass-heatzy) that is actively maintained and is kept up to date with Home Assistant.**
+
 Home Assistant integration for the [Heatzy Pilot](https://heatzy.com/pilote) electric heater controller.
 
 > You can find some extra information on how to integrate this component in your Home Assistant installation [here](https://community.home-assistant.io/t/heatzy-compoment/54863).
